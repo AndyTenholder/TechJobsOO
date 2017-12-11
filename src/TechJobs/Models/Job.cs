@@ -11,8 +11,20 @@
         public CoreCompetency CoreCompetency { get; set; }
         public PositionType PositionType { get; set; }
 
+
         public Job()
         {
+            ID = nextId;
+            nextId++;
+        }
+
+        public Job(string name, Employer employer, Location location, CoreCompetency coreCompetency, PositionType positionType)
+        {
+            Name = name;
+            Employer = employer;
+            Location = location;
+            CoreCompetency = coreCompetency;
+            PositionType = positionType;
             ID = nextId;
             nextId++;
         }

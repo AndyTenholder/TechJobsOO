@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TechJobs.Models;
 
-namespace TechJobs.ViewModels
+namespace TechJobs.ViewModels 
 {
-    public class SearchJobsViewModel 
+    public class SearchJobsViewModel : BaseViewModel
     {
         // TODO #7.1 - Extract members common to JobFieldsViewModel
         // to BaseViewModel
@@ -17,27 +17,17 @@ namespace TechJobs.ViewModels
         public JobFieldType Column { get; set; } = JobFieldType.All;
 
         // The search value
+        private string inputValue = "";
         [Display(Name = "Keyword:")]
-        public string Value { get; set; } = "";
-
-        // All columns, for display
-        public List<JobFieldType> Columns { get; set; }
-
-        // View title
-        public string Title { get; set; } = "";
-
-        public SearchJobsViewModel()
+        public string Value
         {
-            // Populate the list of all columns
-
-            Columns = new List<JobFieldType>();
-
-            foreach (JobFieldType enumVal in Enum.GetValues(typeof(JobFieldType)))
+            get
             {
-                Columns.Add(enumVal);
+                return inputValue;
+            } set
+            {
+                if (value != null) { inputValue = value; }
             }
-
-
         }
     }
 }
